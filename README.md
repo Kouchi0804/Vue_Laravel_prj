@@ -31,10 +31,14 @@ DB_USERNAME=vue_laravel_prj
 データベースとの接続を確認
 php artisan migrate
 
-■ルーティング
-初回アクセスはLarabel側のルーティング(web.php)でルート処理してapp.blade.phpを通るようにし、
+■ルーティング  
+初回アクセスはLarabel側のルーティング(web.php)でルート処理してapp.blade.phpを通るようにし、  
 以降はVue側のルーティングでコンポーネント切り替えで表示するコンテンツを切り替える(SPA)
-
+```
+Route::get('/{any}', function() {
+    return view('app');
+})->where('any', '.*');
+```
 
 ## コマンドプロンプト
 ■Laravelプロジェクト作成  
