@@ -21,6 +21,16 @@ Laravel Framework 11.21.0
 ■Composerバージョン  
 Composer version 2.7.7 2024-06-10 22:11:12  
 
+■DB情報
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=vue_laravel_prj
+DB_USERNAME=vue_laravel_prj
+
+データベースとの接続を確認
+php artisan migrate
+
 
 ## コマンドプロンプト
 ■Laravelプロジェクト作成  
