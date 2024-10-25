@@ -20,7 +20,8 @@
     </head>
     <body>
         <div id="app">
-        <header-component></header-component>
+            <header-component></header-component>
+            <router-view name="Goods"/></router-view>
         </div>
     </body>
     @vite(['resources/js/app.js'])

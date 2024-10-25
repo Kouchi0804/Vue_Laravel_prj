@@ -11,7 +11,7 @@ class GoodsController extends Controller
     public function index()
     {
         //Goodsテーブルの情報を全件取得
-        return = Goods::all(); 
+        return Goods::all();
     }
 
     /**
