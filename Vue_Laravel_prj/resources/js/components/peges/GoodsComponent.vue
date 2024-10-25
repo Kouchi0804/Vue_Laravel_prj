@@ -49,12 +49,16 @@
   }
 
   .item_list > .card {
-    width: 18rem;
+    width: calc((100% - 60px) / 4);
   }
 
   .item_list .card-price {
     display: block;
     text-align: right;
+  }
+
+  #block-itemlist {
+    margin: 30px 0;
   }
 
 </style>
