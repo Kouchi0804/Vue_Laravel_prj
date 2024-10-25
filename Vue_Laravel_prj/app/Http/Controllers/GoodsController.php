@@ -3,15 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Goods;  // Goodsモデル
 
 class GoodsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
-        //
+        //Goodsテーブルの情報を全件取得
+        return = Goods::all(); 
     }
 
     /**
