@@ -11,7 +11,13 @@ class GoodsController extends Controller
     public function index()
     {
         //Goodsテーブルの情報を全件取得
-        return Goods::all();
+        //return Goods::all();
+        //$goodslist = Goods::all();
+        //return response()->json($goodslist);
+        
+        //ページネーション作成のため、response関数でjson形式で返す
+        $goodslist = Goods::paginate(10);
+        return response()->json($goodslist);
     }
 
     /**
