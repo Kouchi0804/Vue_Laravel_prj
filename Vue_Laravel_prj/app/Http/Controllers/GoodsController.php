@@ -20,20 +20,30 @@ class GoodsController extends Controller
         return response()->json($goodslist);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         //
     }
 
     /**
-     * Store a newly created resource in storage.
+     * 送られたデータをデータベースに保存
      */
     public function store(Request $request)
     {
-        //
+        //バリデーション
+        $validatedData = $request->validate([
+            'goods_title' => 'required',
+            'goods_price' => 'required',
+            'goods_stock' => 'required',
+            'goods_comment' => 'nullable',
+            'goods_img' => 'nullable|image|max:2048',
+        ]);
+
+        //DBに登録
+        $goods = Goods::create($validatedData);
+
+
+        return response()->json(['message' => 'Item created successfully', 'item' => $goods], 201);
     }
 
     /**

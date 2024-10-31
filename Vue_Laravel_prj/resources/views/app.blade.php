@@ -21,8 +21,10 @@
     <body>
         <div id="app">
             <header-component></header-component>
-            <router-view name="Goods"/></router-view>
+            <router-view></router-view>
+            <!-- <router-view name="Goods"/></router-view> -->
         </div>
     </body>
+    @vite(['resources/css/app.css'])
     @vite(['resources/js/app.js'])
 </html>

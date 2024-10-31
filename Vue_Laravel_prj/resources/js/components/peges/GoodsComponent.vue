@@ -102,10 +102,6 @@
     text-align: right;
   }
 
-  #block-itemlist {
-    margin: 30px 0;
-  }
-
   nav{
     width: 100%;
     display: flex;

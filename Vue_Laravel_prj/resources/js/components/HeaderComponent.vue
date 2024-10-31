@@ -9,10 +9,14 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <router-link v-bind:to="{name: 'GoodsComponent'}">
+                        <a class="nav-link">Home</a>
+                    </router-link>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="#">Navbar1</a>
+                    <router-link v-bind:to="{name: 'GoodsCreateComponent'}">
+                        <button  class="nav-link">商品登録</button >
+                    </router-link>
                 </li>
                 <li class="nav-item">
                 <a class="nav-link" href="#">Navbar2</a>
