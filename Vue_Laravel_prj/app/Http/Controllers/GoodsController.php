@@ -39,11 +39,18 @@ class GoodsController extends Controller
             'goods_img' => 'nullable|image|max:2048',
         ]);
 
+        // 画像ファイルの処理
+        if ($request->hasFile('goods_img')) {
+            $filename = $request->goods_img->getClientOriginalName();
+            $filePath = $request->goods_img->storeAs('goods', $filename, 'public');
+            $validatedData['goods_img'] = '/storage/' . $filePath;
+        }
+
         //DBに登録
         $goods = Goods::create($validatedData);
 
 
-        return response()->json(['message' => 'Item created successfully', 'item' => $goods], 201);
+        return response()->json(['message' => '商品を登録しました', 'item' => $goods], 201);
     }
 
     /**

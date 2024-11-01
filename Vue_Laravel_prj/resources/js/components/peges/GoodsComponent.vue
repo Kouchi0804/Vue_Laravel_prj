@@ -3,7 +3,7 @@
         <div class="container">
             <div class="item_list">
                 <div class="card" v-for="goods in goodslist.data" :key="goods.id">
-                    <img alt="Vue logo" :src="goods.goods_img" >
+                    <img alt="Vue logo" :src="`${goods.goods_img}`" >
                     <div class="card-body">
                         <span>{{ goods.id}}</span>
                     <h5 class="card-title">{{ goods.goods_title }}</h5>
