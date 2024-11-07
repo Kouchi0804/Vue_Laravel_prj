@@ -56,9 +56,17 @@ class GoodsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
-        //
+        // return $id;
+
+        $goods = Goods::find($id);
+        
+        if(!$goods){
+            return response()->json(['message' => '商品が存在しません'], 404);
+        }
+
+        return response()->json($goods);
     }
 
     /**

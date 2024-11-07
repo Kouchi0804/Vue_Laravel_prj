@@ -2,15 +2,17 @@
     <section id="block-itemlist">
         <div class="container">
             <div class="item_list">
-                <div class="card" v-for="goods in goodslist.data" :key="goods.id">
+                <div class="item_box" v-for="goods in goodslist.data" :key="goods.id">
+                    <router-link v-bind:to="{name: 'GoodsShowComponent',params: {goodsId: goods.id }}" class="card">
                     <img alt="Vue logo" :src="`${goods.goods_img}`" >
                     <div class="card-body">
                         <span>{{ goods.id}}</span>
-                    <h5 class="card-title">{{ goods.goods_title }}</h5>
-                    <p class="card-text">{{ goods.goods_comment }}</p>
-                    <span class="card-price">￥{{ goods.goods_price }}</span>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <h5 class="card-title">{{ goods.goods_title }}</h5>
+                        <p class="card-text">{{ goods.goods_comment }}</p>
+                        <span class="card-price">￥{{ goods.goods_price }}</span>
+                        <router-link v-bind:to="{name: 'GoodsUpdateComponent'}" class="btn btn-primary">商品を編集</router-link>
                     </div>
+                    </router-link>
                 </div>
                 <nav aria-label="Page navigation example">
                     <ul class="pagination">
@@ -57,11 +59,6 @@
                     this.totalPages = Array.from({ length: this.goodslist.last_page }, (_, i) => i + 1);
                     //watch用のメソッド
                     this.updatepages();
-
-                     console.log(this.goodslist)
-                    // console.log('url')
-                    // console.log(url)
-                    //console.log(this.totalPages)
                 });
             },
             updatepages(){
@@ -93,7 +90,7 @@
     gap: 20px;
   }
 
-  .item_list > .card {
+  .item_list > .item_box {
     width: calc((100% - 60px) / 4);
   }
 
@@ -116,6 +113,9 @@
     align-items: center;
   }
 
+  .btn.btn-primary {
+    color: #fff;
+  }
 
 
 </style>

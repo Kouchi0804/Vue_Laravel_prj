@@ -9,3 +9,7 @@ Route::get('/goods', [GoodsController::class, 'index']);
 
 //商品追加
 Route::post('/goods/create', [GoodsController::class, 'store']);
+
+//商品詳細
+//コントローラーにidを渡す
+Route::get('/goods/show/{goodsId}', [GoodsController::class, 'show']);
