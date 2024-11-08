@@ -10,7 +10,7 @@
                         <h5 class="card-title">{{ goods.goods_title }}</h5>
                         <p class="card-text">{{ goods.goods_comment }}</p>
                         <span class="card-price">￥{{ goods.goods_price }}</span>
-                        <router-link v-bind:to="{name: 'GoodsUpdateComponent'}" class="btn btn-primary">商品を編集</router-link>
+                        <router-link v-bind:to="{name: 'GoodsUpdateComponent',params: {goodsId: goods.id }}" class="btn btn-primary">商品を編集</router-link>
                     </div>
                     </router-link>
                 </div>

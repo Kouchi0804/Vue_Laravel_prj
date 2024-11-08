@@ -40,7 +40,7 @@
                 axios.get('/api/goods/show/' + this.goodsId)
                    .then((res) => {
                        this.goodslist = res.data;
-                       console.log(this.goodslist)
+                       //console.log(this.goodslist)
                 });
             }
             // async getGoods(){

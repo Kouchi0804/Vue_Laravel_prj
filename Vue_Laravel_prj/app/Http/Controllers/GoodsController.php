@@ -82,7 +82,23 @@ class GoodsController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        //バリデーション
+        $validatedData = $request->validate([
+            'goods_title' => 'required',
+            'goods_price' => 'required',
+            'goods_stock' => 'required',
+            'goods_comment' => 'nullable',
+            'goods_img' => 'nullable',
+        ]);
+
+        //モデルの取得
+        //findOrFail
+        //指定したidのレコードを取得　対象がないときは404
+        $goods = Goods::findOrFail($id);
+
+        $goods->update($validatedData);
+
+        return response()->json(['message' => '商品情報を更新しました', 'user' => $goods]);
     }
 
     /**
