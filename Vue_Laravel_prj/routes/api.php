@@ -17,3 +17,6 @@ Route::get('/goods/show/{goodsId}', [GoodsController::class, 'show']);
 //商品編集
 Route::get('/goods/update/{goodsId}', [GoodsController::class, 'show']);
 Route::put('/goods/update/{goodsId}', [GoodsController::class, 'update']);
+
+//商品削除
+Route::delete('/goods/show/{goodsId}',[GoodsController::class, 'destroy']);

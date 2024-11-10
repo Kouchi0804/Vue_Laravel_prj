@@ -17,6 +17,7 @@
                             <label for="goods_title">商品価格</label>
                             <input type="text" class="form-control" id="goods_title" aria-describedby="goods_title" placeholder="商品名" v-bind:value="goodslist.goods_price" disabled>
                         </div>
+                        <button type="button" v-on:click="deleteGoodsConfirm()" class="btn btn-danger">商品を削除</button>
                     </div>
                 </div>
             </form>
@@ -42,19 +43,23 @@
                        this.goodslist = res.data;
                        //console.log(this.goodslist)
                 });
-            }
-            // async getGoods(){
-            //     try {
-            //             const response = await fetch(`/api/goods/show/` + this.goodsId);
-            //             if (!response.ok) {
-            //                 throw new Error('Product not found');
-            //             } 
-            //             this.product = await response.json(); 
-            //             console.log(this.product);
-            //         } catch (error) {
-            //             console.error(error);
-            //     }
-            // }
+            },
+            deleteGoods(){
+                console.error("2222222222");
+                axios.delete('/api/goods/show/' + this.goodsId)
+                    .then(() => {
+                        alert('商品を削除しました');
+                        setTimeout(() => { this.$router.push('/');})
+                    })
+                    .cathc(error =>{
+                        console.error(error)
+                    })
+            },
+            deleteGoodsConfirm(){
+                if(confirm('商品を削除しますか？')){
+                    this.deleteGoods();
+                }
+            },
         },
         mounted() {
             this.getGoods();

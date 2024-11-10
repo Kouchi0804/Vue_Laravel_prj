@@ -107,5 +107,8 @@ class GoodsController extends Controller
     public function destroy(string $id)
     {
         //
+        $goods = Goods::findOrFail($id);
+        $goods->delete();
+        return response()->json(['message' => '商品情報を削除しました']);
     }
 }
