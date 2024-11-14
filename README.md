@@ -2,8 +2,25 @@
 
 
 ## 概要
+このプロジェクトは、LaravelとVue.jsを使用して構築されたシングルページアプリケーション（SPA）です。
+
+初回アクセスはLarabel側のルーティング(web.php)でルート処理してapp.blade.phpを通り、  
+  以降はVue側のルーティングでコンポーネント切り替えでコンテンツを切り替えて表示しています。
+
+■ディレクトリ
+Vue_Laravel_prj  
+├─app  
+├省略  
+├─resources  
+│  └─views  
+│     └─app.blade.php  
+└─routes  
+&nbsp;&nbsp;└─web.php  
+
+
+### 背景
 以前参加した案件で初めてvueに触る機会がありましたが、直近の案件では触る機会があまりなかったため、  
-思い出しとPHPの学習も兼ねて、Vue3+PHP(Laravel)でローカルにプロジェクトを作成しました。  
+思い出しとPHPの学習も兼ねて、PHP(Laravel)+Vue3でプロジェクトを作成しました。  
 サーバーにアップしていないため、今の時点ではローカル環境でしか見ることができません。  
 将来的にはどこかのサーバーにアップしたいと考えています。
 
@@ -28,17 +45,6 @@ DB_PORT=3306
 DB_DATABASE=vue_laravel_prj
 DB_USERNAME=vue_laravel_prj
 
-データベースとの接続を確認
-php artisan migrate
-
-■ルーティング  
-初回アクセスはLarabel側のルーティング(web.php)でルート処理してapp.blade.phpを通るようにし、  
-以降はVue側のルーティングでコンポーネント切り替えで表示するコンテンツを切り替える(SPA)
-```
-Route::get('/{any}', function() {
-    return view('app');
-})->where('any', '.*');
-```
 
 ## コマンドプロンプト
 ■Laravelプロジェクト作成  
