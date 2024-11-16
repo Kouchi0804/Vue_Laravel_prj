@@ -19,7 +19,9 @@
                     </router-link>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="#">Navbar2</a>
+                    <router-link v-bind:to="{name: 'UserRegisterComponent'}">
+                        <button  class="nav-link">ユーザー登録</button >
+                    </router-link>
                 </li>
             </ul>
             </div>

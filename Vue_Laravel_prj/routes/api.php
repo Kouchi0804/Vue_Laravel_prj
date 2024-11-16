@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GoodsController;
+use App\Http\Controllers\Auth\RegisterController;
 
 //商品一覧
 Route::get('/goods', [GoodsController::class, 'index']);
@@ -20,3 +21,6 @@ Route::put('/goods/update/{goodsId}', [GoodsController::class, 'update']);
 
 //商品削除
 Route::delete('/goods/show/{goodsId}',[GoodsController::class, 'destroy']);
+
+//ユーザー登録
+Route::post('/register',[RegisterController::class,'register']);

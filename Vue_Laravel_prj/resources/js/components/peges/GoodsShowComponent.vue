@@ -45,7 +45,6 @@
                 });
             },
             deleteGoods(){
-                console.error("2222222222");
                 axios.delete('/api/goods/show/' + this.goodsId)
                     .then(() => {
                         alert('商品を削除しました');

@@ -5,6 +5,7 @@ import GoodsComponent from '@/components/peges/GoodsComponent.vue';
 import GoodsCreateComponent from '@/components/peges/GoodsCreateComponent.vue';
 import GoodsUpdateComponent from '@/components/peges/GoodsUpdateComponent.vue';
 import GoodsShowComponent from '@/components/peges/GoodsShowComponent.vue';
+import UserRegisterComponent from '@/components/peges/User/UserRegisterComponent.vue';
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -34,6 +35,12 @@ const router = createRouter({
             component: GoodsShowComponent,
             props: true
         },
+        {
+            path: '/user/register',
+            name: "UserRegisterComponent",
+            component: UserRegisterComponent
+        },
+
         //複数の場合
         //ルーティングの際にcomponentではなくcomponentsを指定する
         // {
