@@ -23,6 +23,11 @@
                         <button  class="nav-link">ユーザー登録</button >
                     </router-link>
                 </li>
+                <li class="nav-item">
+                    <router-link v-bind:to="{name: 'UserLoginComponent'}">
+                        <button  class="nav-link">ログイン</button >
+                    </router-link>
+                </li>
             </ul>
             </div>
         </div>
