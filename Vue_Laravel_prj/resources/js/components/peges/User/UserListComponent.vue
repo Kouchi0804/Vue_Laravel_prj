@@ -4,7 +4,7 @@
             <h1>UserList</h1>
             <p>名前: {{ name }}</p>
             <p>メールアドレス: {{ email }}</p>
-            <button type="button" @click="logout">ログアウト</button>
+            <button type="button" @click="logout" class="btn btn-success">ログアウト</button>
         </div>
     </section>
 </template>
@@ -33,8 +33,8 @@
                 axios.get("/api/user")
                 .then(response => {
                     console.log(response)
-                    // this.user.name = response.data.user.name;
-                    // this.user.email = response.data.user.email;
+                    this.name = response.data.name;
+                    this.email = response.data.email;
                 })
                 .catch(error => {
                     console.error(error);

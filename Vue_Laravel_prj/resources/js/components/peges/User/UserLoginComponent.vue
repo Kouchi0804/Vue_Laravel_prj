@@ -36,9 +36,21 @@
                         })
                         .then((res)=>{
                             if( res.data.status_code == 200 ) {
+
+                                //ログイン後に認証ずみユーザー情報が取得できているか確認
+                                // axios.get("/api/user/")
+                                //     .then(response => {
+                                //         console.log(response)
+                                //     })
+                                //     .catch(error => {
+                                //         console.error(error);
+                                //     }
+                                // );
+
+                                //ログイン情報用のコンポーネントに遷移
                                 this.$router.push("/about");
                             }
-                            this.errorMessage = 'ログインに失敗しました。'
+                            //this.errorMessage = 'ログインに失敗しました。'
                         })
                         .catch((err) => {
                             console.log(err);
@@ -50,6 +62,6 @@
                     console.log(err);
                 })
             }
-        }
+        },
     }
 </script>
