@@ -25,7 +25,6 @@ Vue_Laravel_prj
 
 ### 今後の課題・対応予定  
 Vuexの実装  
-SPA対応用の認証の実装  
 Laravel用のOSSのチェック（どういった機能設計かなど）
 
 ## 環境
@@ -66,3 +65,28 @@ npm install
 ■Vue Routerインストール
 npm install vue-router
 
+
+## 実装した機能・ページ
+
+### SPA用のログイン機能
+LaravelSanctumを利用したログイン機能を追加しました。
+・ログイン画面
+![image](https://github.com/user-attachments/assets/d39dc10a-46c3-4ae1-a0f8-15c58665ad55)
+・ログイン後にユーザー情報画面に遷移
+![image](https://github.com/user-attachments/assets/53d8d208-b906-4b68-a250-05cc6be464f5)
+
+### CRUDの実装
+商品情報を登録、表示、更新、削除する画面を追加
+
+・登録
+![image](https://github.com/user-attachments/assets/4981363f-39b5-47c4-b2f2-9af7d16682c4)
+
+・表示
+![image](https://github.com/user-attachments/assets/458dd867-52c9-41a6-bec2-0771d32821f0)
+
+・更新
+![image](https://github.com/user-attachments/assets/1618772c-78af-41bb-bd75-9de0b2c32d04)
+
+
+・削除
+![image](https://github.com/user-attachments/assets/3a2a3668-0963-4eeb-b7dc-97d4b97365dd)
