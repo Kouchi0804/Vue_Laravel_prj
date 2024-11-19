@@ -1,6 +1,8 @@
 import './bootstrap';
 import { createApp } from 'vue';
 import router from './router/router.js';
+// import store from './store/store.vue';
+
 
 const app = createApp({});
 
@@ -11,4 +13,7 @@ app.component('example-component', ExampleComponent);
 app.component('header-component', HeaderComponent);
 
 // app.mount('#app');
-app.use(router).mount("#app");
+app.use(router);
+// app.use(store);
+
+app.mount("#app");
