@@ -1,7 +1,12 @@
 import './bootstrap';
 import { createApp } from 'vue';
 import router from './router/router.js';
-// import store from './store/store.vue';
+
+//vuex
+//import store from './store/user.js';
+
+//pinia
+import { createPinia } from "pinia";
 
 
 const app = createApp({});
@@ -14,6 +19,12 @@ app.component('header-component', HeaderComponent);
 
 // app.mount('#app');
 app.use(router);
-// app.use(store);
+
+//vuex
+//app.use(store);
+
+//pinia
+app.use(createPinia())
+
 
 app.mount("#app");

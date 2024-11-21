@@ -1,6 +1,12 @@
 <template>
+    <section >
+        <div class="container">
+            <router-link v-bind:to="{name: 'UserRegisterComponent'}" >新規登録</router-link>
+        </div>
+    </section>
     <section id="block-user-login">
         <div class="container">
+            
            <form @submit.prevent="login">
                 <div class="form-group">
                     <label for="user_email">メールアドレス</label>
@@ -18,6 +24,7 @@
 </template>
 
 <script>
+
     export default {
         data() {
             return {
@@ -37,16 +44,6 @@
                         .then((res)=>{
                             if( res.data.status_code == 200 ) {
 
-                                //ログイン後に認証ずみユーザー情報が取得できているか確認
-                                // axios.get("/api/user/")
-                                //     .then(response => {
-                                //         console.log(response)
-                                //     })
-                                //     .catch(error => {
-                                //         console.error(error);
-                                //     }
-                                // );
-
                                 //ログイン情報用のコンポーネントに遷移
                                 this.$router.push("/about");
                             }
@@ -65,3 +62,39 @@
         },
     }
 </script>
+
+<!-- <script setup>
+
+    import { reactive } from 'vue'
+    import { useStore } from '@/store/pinia_user.js'
+
+    const user = useStore();
+
+    const userData = reactive({
+        email: '',
+        password: '',
+        errorMessage: '',
+    });
+
+    const login = async () => {
+        try {
+            await axios.get('/sanctum/csrf-cookie');
+            const res = await axios.post('/api/login', {
+                email: userData.email,
+                password: userData.password }
+            );
+
+            if (res.data.status_code === 200) {
+                router.push("/about");
+            } else {
+                userData.errorMessage = 'ログインに失敗しました。';
+            }
+        } catch (err) {
+            console.log(err);
+            userData.errorMessage = 'ログインに失敗しました。';
+        }
+    };
+    
+
+
+</script> -->

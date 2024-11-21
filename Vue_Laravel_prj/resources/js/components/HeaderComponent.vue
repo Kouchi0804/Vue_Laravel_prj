@@ -18,12 +18,25 @@
                         <button  class="nav-link">商品登録</button >
                     </router-link>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <router-link v-bind:to="{name: 'UserRegisterComponent'}">
                         <button  class="nav-link">ユーザー登録</button >
                     </router-link>
-                </li>
-                <li class="nav-item">
+                </li> -->
+                <!-- <li class="nav-item" >
+                    <router-link v-bind:to="{name: 'UserLoginComponent'}">
+                        <button  class="nav-link">{{login_flg}}ログイン</button >
+                    </router-link>
+                </li> -->
+
+                <li class="nav-item test1"><span>{{ login_flg }}</span></li>
+                <!-- <li class="nav-item test1" v-if="usestore.user.login_flg"><span>{{ login_flg }}{{ userName }}</span></li>
+                <li class="nav-item test2" v-else>
+                    <router-link v-bind:to="{name: 'UserLoginComponent'}">
+                        <button  class="nav-link">ログイン</button >
+                    </router-link>
+                </li> -->
+                <li class="nav-item test2">
                     <router-link v-bind:to="{name: 'UserLoginComponent'}">
                         <button  class="nav-link">ログイン</button >
                     </router-link>
@@ -35,8 +48,15 @@
     </div>
 </template>
 
-<script>
-    export default {
+<script setup>
+    import { ref,reactive, watch } from 'vue';
+    import { computed } from 'vue'
+    import { useStore } from '@/store/pinia_user.js';
 
-    }
+    //Pinia
+    const usestore = useStore()
+
+    const userName = computed(() =>usestore.user.name);
+    const login_flg = computed(() =>usestore.user.login_flg);
+
 </script>
