@@ -9,11 +9,14 @@ class Goods extends Model
 {
     use HasFactory;
 
+
     protected $fillable = [
-        'goods_title',
-        'goods_price',
-        'goods_stock',
-        'goods_comment',
-        'goods_img',
+        'good_id',
+        'user_id',
+        'quantity',
+        'unit_price',
+        'total_price',
+        'purchased_at',
+        'payment_status',
     ];
 }

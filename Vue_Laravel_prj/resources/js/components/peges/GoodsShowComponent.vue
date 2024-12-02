@@ -1,8 +1,8 @@
 <template>
-    <section id="block-itemcreate">
+    <section id="block-itemshow">
         <div class="container">
             <form>
-                <div class="form_box">
+                <div class="form_box" >
                     <img alt="Vue logo" :src="`${goodslist.goods_img}`" >
                     <div class="form_content">
                         <div class="form-group">
@@ -18,6 +18,7 @@
                             <input type="text" class="form-control" id="goods_title" aria-describedby="goods_title" placeholder="商品名" v-bind:value="goodslist.goods_price" disabled>
                         </div>
                         <button type="button" v-on:click="deleteGoodsConfirm()" class="btn btn-danger">商品を削除</button>
+                        <!-- <button type="button" v-on:click="moveBox(goodslist.id)" class="btn btn-primary test_btn" :id="'item_' + goodslist.id">test</button> -->
                     </div>
                 </div>
             </form>
@@ -59,6 +60,21 @@
                     this.deleteGoods();
                 }
             },
+            moveBox(itemId){
+                const box = document.getElementById('item_' + itemId);
+                let position = 50;
+                const interval = setInterval(frame, 10);
+
+                function frame() {
+                    if (position >= 350) {
+                        clearInterval(interval);
+                    } else {
+                        position++;
+                        box.style.left = position + 'px';
+                    }
+                }
+            }
+
         },
         mounted() {
             this.getGoods();
@@ -75,5 +91,7 @@
     }
     .form_content{
         width: 50%;
+        position: relative;
     }
+
 </style>

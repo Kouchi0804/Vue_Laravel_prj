@@ -2,7 +2,7 @@
     <section id="block-itemlist">
         <div class="container">
             <div class="item_list">
-                <div class="item_box" v-for="goods in goodslist.data" :key="goods.id">
+                <div class="item_box" v-for="goods in goodslist.data" :key="goods.id" :id="'item_' + goods.id">
                     <router-link v-bind:to="{name: 'GoodsShowComponent',params: {goodsId: goods.id }}" class="card">
                     <img alt="Vue logo" :src="`${goods.goods_img}`" >
                     <div class="card-body">
@@ -67,7 +67,7 @@
                 let startPage = Math.max(currentPage - 2, 1);
                 let endPage = Math.min(currentPage + 2, this.goodslist.last_page);
                 this.visiblePages = this.totalPages.slice(startPage - 1, endPage);
-            }
+            },
         },
         mounted() {
             this.getGoods('/api/goods');
@@ -117,5 +117,12 @@
     color: #fff;
   }
 
+  .box{
+    width: 100px; height: 100px; background-color: blue; position: absolute; top: 50px; left: 50px;
+  }
+
+  .card-body {
+    position: relative;
+  }
 
 </style>
