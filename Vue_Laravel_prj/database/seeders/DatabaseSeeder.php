@@ -21,6 +21,10 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         //コマンドで呼び出すSeederをここで指定
-        $this->call(GoodsSeeder::class);
+        //Goods
+        //$this->call(GoodsSeeder::class);
+
+        //Sale
+        $this->call(SaleSeeder::class);
     }
 }
