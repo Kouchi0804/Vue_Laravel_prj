@@ -2,6 +2,8 @@
     import { ref, reactive,onMounted  } from 'vue';
     import { useRoute } from 'vue-router';
 
+    import Modal from '@/components/parts/ModalButtonComponent.vue';
+
     //ルート情報を取得
     const route = useRoute();
 
@@ -79,7 +81,8 @@
                             <label for="goods_title">商品価格</label>
                             <input type="text" class="form-control" id="goods_title" aria-describedby="goods_title" placeholder="商品名" v-bind:value="goodslist.goods_price" disabled>
                         </div>
-                        <button type="button" v-on:click="deleteGoodsConfirm()" class="btn btn-danger">商品を削除</button>
+                        <div ><button type="button" v-on:click="deleteGoodsConfirm()" class="btn btn-danger">商品を削除</button><Modal/></div>
+                        
                         <!-- <button type="button" v-on:click="moveBox(goodslist.id)" class="btn btn-primary test_btn" :id="'item_' + goodslist.id">test</button> -->
                     </div>
                 </div>
