@@ -7,12 +7,15 @@
     //ルート情報を取得
     const route = useRoute();
 
+    //Props     --------------------------------------------------
     const props = defineProps({
         goodsId:String
     });
 
+    //data      --------------------------------------------------
     const goodslist = reactive({});
 
+    //methods   --------------------------------------------------
     const getGoods = () =>{
         const productId = route.params.id;
         axios.get('/api/goods/show/' + props.goodsId)

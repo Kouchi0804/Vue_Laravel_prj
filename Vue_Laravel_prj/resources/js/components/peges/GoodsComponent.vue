@@ -1,3 +1,60 @@
+<script setup>
+
+    import { ref,reactive,watch,onMounted } from 'vue';
+
+    //Props     --------------------------------------------------
+    const proos = defineProps({
+        msg:String
+    });
+
+    //data      --------------------------------------------------
+    const goodslist = reactive({});
+    const totalPages = reactive([]);
+    const visiblePages = ref([]);
+
+    //methods   --------------------------------------------------
+    const getGoods = (url) => {
+        axios.get(url)
+        .then((res) => {
+            //goodslist = res.data;
+            Object.assign(goodslist,res.data)
+
+            //全ページ数の配列生成
+            totalPages.splice(0, totalPages.length, ...Array.from({ length: goodslist.last_page }, (_, i) => i + 1));
+            console.log(totalPages)
+
+            //watch用のメソッド
+            updatepages();
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+    };
+
+    const updatepages = () => {
+        //現在のページ
+        let currentPage = goodslist.current_page;
+        let startPage = Math.max(currentPage - 2, 1);
+        let endPage = Math.min(currentPage + 2, goodslist.last_page);
+        
+
+        visiblePages.value = totalPages.slice(startPage - 1, endPage);
+        // visiblePages.push(totalPages.slice(startPage - 1, endPage));
+        //Object.assign(visiblePages,totalPages.slice(startPage - 1, endPage))
+    };
+
+    //watch     --------------------------------------------------
+    watch(goodslist,(newValue,oldValue) =>{
+        updatepages();
+    },{ deep: true });
+
+    //onMounted --------------------------------------------------
+    onMounted(() => {
+        getGoods('/api/goods');
+    });
+
+</script>
+
 <template>
     <section id="block-itemlist">
         <div class="container">
@@ -38,52 +95,7 @@
     </section>
 </template>
 
-<script>
-    export default {
-        name: 'block_itemlist',
-        props: {
-            msg: String
-        },
-        data(){
-            return{
-                goodslist:[],
-                totalPages: [],
-                visiblePages: []
-            }
-        },
-        methods:{
-            getGoods(url){
-                axios.get(url).then((res) => {
-                    this.goodslist = res.data;
-                    //全ページ数の配列生成
-                    this.totalPages = Array.from({ length: this.goodslist.last_page }, (_, i) => i + 1);
-                    //watch用のメソッド
-                    this.updatepages();
-                });
-            },
-            updatepages(){
-                //現在のページ
-                let currentPage = this.goodslist.current_page;
-                let startPage = Math.max(currentPage - 2, 1);
-                let endPage = Math.min(currentPage + 2, this.goodslist.last_page);
-                this.visiblePages = this.totalPages.slice(startPage - 1, endPage);
-            },
-        },
-        mounted() {
-            this.getGoods('/api/goods');
-        },
-        watch: {
-            goodslist: {
-                handler() {
-                    this.updatepages();
-                },
-                deep: true
-            }
-        }
-    }
-</script>
-
-<style>
+<style scoped>
   .item_list {
     display: flex;
     flex-wrap: wrap;
