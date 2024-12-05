@@ -1,3 +1,63 @@
+<script setup>
+    import { ref, reactive,onMounted  } from 'vue';
+    import { useRoute } from 'vue-router';
+
+    //ルート情報を取得
+    const route = useRoute();
+
+    const props = defineProps({
+        goodsId:Number
+    });
+
+    const goodslist = reactive([]);
+
+    const getGoods = () =>{
+        const productId = route.params.id;
+        axios.get('/api/goods/show/' + goodsId)
+            .then((res) => {
+                goodslist = res.data;
+               
+        });
+    };
+
+    const deleteGoods = () => {
+        axios.delete('/api/goods/show/' + goodsId)
+            .then(() => {
+                alert('商品を削除しました');
+                setTimeout(() => { route.push('/');})
+            })
+            .cathc(error =>{
+                console.error(error)
+            })
+    };
+
+    const deleteGoodsConfirm = () => {
+        if(confirm('商品を削除しますか？')){
+            deleteGoods();
+        }
+    };
+
+    const moveBox = () => {
+        const box = document.getElementById('item_' + itemId);
+        let position = 50;
+        const interval = setInterval(frame, 10);
+
+        function frame() {
+            if (position >= 350) {
+                clearInterval(interval);
+            } else {
+                position++;
+                box.style.left = position + 'px';
+            }
+        }
+    };
+
+    onMounted(() => {
+        getGoods();
+    });
+
+</script>
+
 <template>
     <section id="block-itemshow">
         <div class="container">
@@ -26,63 +86,8 @@
     </section>
 </template>
 
-<script>
-    export default {
-        props: {
-            goodsId: Number
-        },
-        data() {
-            return {
-                goodslist:[],
-            };
-        },
-        methods:{
-            getGoods(){
-                const productId = this.$route.params.id;
-                axios.get('/api/goods/show/' + this.goodsId)
-                   .then((res) => {
-                       this.goodslist = res.data;
-                       //console.log(this.goodslist)
-                });
-            },
-            deleteGoods(){
-                axios.delete('/api/goods/show/' + this.goodsId)
-                    .then(() => {
-                        alert('商品を削除しました');
-                        setTimeout(() => { this.$router.push('/');})
-                    })
-                    .cathc(error =>{
-                        console.error(error)
-                    })
-            },
-            deleteGoodsConfirm(){
-                if(confirm('商品を削除しますか？')){
-                    this.deleteGoods();
-                }
-            },
-            moveBox(itemId){
-                const box = document.getElementById('item_' + itemId);
-                let position = 50;
-                const interval = setInterval(frame, 10);
 
-                function frame() {
-                    if (position >= 350) {
-                        clearInterval(interval);
-                    } else {
-                        position++;
-                        box.style.left = position + 'px';
-                    }
-                }
-            }
-
-        },
-        mounted() {
-            this.getGoods();
-        },
-        
-    }
-</script>
-<style>
+<style scoped>
     .form_box{
         display: flex;
         align-items: center;
