@@ -6,22 +6,24 @@
     const route = useRoute();
 
     const props = defineProps({
-        goodsId:Number
+        goodsId:String
     });
 
-    const goodslist = reactive([]);
+    const goodslist = reactive({});
 
     const getGoods = () =>{
         const productId = route.params.id;
-        axios.get('/api/goods/show/' + goodsId)
-            .then((res) => {
-                goodslist = res.data;
-               
+        axios.get('/api/goods/show/' + props.goodsId)
+        .then((res) => {
+            Object.assign(goodslist, res.data);
+        })
+        .catch((error) => {
+            console.error(error);
         });
     };
 
     const deleteGoods = () => {
-        axios.delete('/api/goods/show/' + goodsId)
+        axios.delete('/api/goods/show/' + props.goodsId)
             .then(() => {
                 alert('商品を削除しました');
                 setTimeout(() => { route.push('/');})
