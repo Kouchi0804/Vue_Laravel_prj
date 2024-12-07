@@ -21,7 +21,6 @@
 
             //全ページ数の配列生成
             totalPages.splice(0, totalPages.length, ...Array.from({ length: goodslist.last_page }, (_, i) => i + 1));
-            console.log(totalPages)
 
             //watch用のメソッド
             updatepages();
@@ -39,8 +38,6 @@
         
 
         visiblePages.value = totalPages.slice(startPage - 1, endPage);
-        // visiblePages.push(totalPages.slice(startPage - 1, endPage));
-        //Object.assign(visiblePages,totalPages.slice(startPage - 1, endPage))
     };
 
     //watch     --------------------------------------------------
@@ -61,7 +58,10 @@
             <div class="item_list">
                 <div class="item_box" v-for="goods in goodslist.data" :key="goods.id" :id="'item_' + goods.id">
                     <router-link v-bind:to="{name: 'GoodsShowComponent',params: {goodsId: goods.id }}" class="card">
-                    <img alt="Vue logo" :src="`${goods.goods_img}`" >
+                    <img 
+                        alt="Vue logo" 
+                        :src="`${goods.goods_img}`"
+                    >
                     <div class="card-body">
                         <span>{{ goods.id}}</span>
                         <h5 class="card-title">{{ goods.goods_title }}</h5>
@@ -136,5 +136,4 @@
   .card-body {
     position: relative;
   }
-
 </style>
